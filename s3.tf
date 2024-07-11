@@ -8,27 +8,20 @@ terraform {
 }
 
 provider "aws" {
-  region     = "ap-south-1"
-  access_key = ""
-  secret_key = ""
+  region     = var.region
+  access_key = var.access_key
+  secret_key = var.secret_key
 }
-resource "aws_instance" "ec2_example" {
-  ami           = "ami-0ec0e125bb6c6e8ec"
-  instance_type = "t2.micro"
-  count         = 1
 
-  tags = {
-    Name = "Terraform EC2"
-  }
-}
 resource "aws_s3_bucket" "example" {
-  bucket = "my-example-bucket"
+  bucket = var.bucket_name
 
   tags = {
-    Name        = "my-example-bucket"
-    Environment = "dev"
+    Name        = var.bucket_name
+    Environment = var.environment
   }
 }
+
 variable "region" {
   description = "The AWS region to deploy in"
   type        = string
