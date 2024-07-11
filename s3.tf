@@ -21,3 +21,27 @@ resource "aws_s3_bucket" "example" {
     Environment = "dev"
   }
 }
+variable "region" {
+  description = "The AWS region to deploy in"
+  type        = string
+}
+
+variable "access_key" {
+  description = "AWS access key"
+  type        = string
+}
+
+variable "secret_key" {
+  description = "AWS secret key"
+  type        = string
+}
+
+variable "bucket_name" {
+  description = "The name of the S3 bucket"
+  type        = string
+}
+
+variable "environment" {
+  description = "The environment where this resource is deployed (e.g., dev, prod)"
+  type        = string
+}
