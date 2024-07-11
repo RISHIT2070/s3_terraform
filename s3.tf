@@ -12,7 +12,15 @@ provider "aws" {
   access_key = ""
   secret_key = ""
 }
+resource "aws_instance" "ec2_example" {
+  ami           = "ami-0ec0e125bb6c6e8ec"
+  instance_type = "t2.micro"
+  count         = 1
 
+  tags = {
+    Name = "Terraform EC2"
+  }
+}
 resource "aws_s3_bucket" "example" {
   bucket = "my-example-bucket"
 
